@@ -10,7 +10,12 @@ const Navbar = () => {
 		<>
 			<div className='container'>
 				<nav className='pt-[42px] flex !items-center justify-between'>
-					<Link to={'/'} className='font-montserrat font-bold text-2xl'>
+					<Link
+						to={'/'}
+						className={`font-montserrat font-bold text-2xl ${
+							toogle ? 'hidden' : 'block'
+						}`}
+					>
 						EasyCV
 					</Link>
 					<div className='xs:flex items-center gap-7 hidden'>
@@ -35,7 +40,7 @@ const Navbar = () => {
 				</nav>
 			</div>
 			<div
-				className={`responsive-nav flex flex-col gap-7 bg-white w-full h-full ps-[50px] pe-[50px] fixed top-0  bottom-0 pt-[42px] transition-all duration-200 ${
+				className={`responsive-nav flex flex-col gap-7 bg-white w-full h-full ps-[50px] pe-[50px] fixed top-0  bottom-0 pt-[42px] transition-all duration-150 ${
 					toogle ? 'left-0' : 'left-[-100%]'
 				} xs:hidden`}
 			>
