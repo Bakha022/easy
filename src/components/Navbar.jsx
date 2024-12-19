@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { MdCancel } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import LinkBtn from './LinkBtn'
 const Navbar = () => {
 	const [toogle, setToogle] = useState(false)
 	// console.log(toogle)
@@ -10,12 +11,7 @@ const Navbar = () => {
 		<>
 			<div className='container'>
 				<nav className='pt-[42px] flex !items-center justify-between'>
-					<Link
-						to={'/'}
-						className={`font-montserrat font-bold text-2xl ${
-							toogle ? 'hidden' : 'block'
-						}`}
-					>
+					<Link to={'/'} className={'font-montserrat font-bold text-2xl '}>
 						EasyCV
 					</Link>
 					<div className='xs:flex items-center gap-7 hidden'>
@@ -51,17 +47,12 @@ const Navbar = () => {
 					<MdCancel onClick={() => setToogle(false)} size={24} />
 				</div>
 				<div className='flex flex-col items-start gap-7'>
-					<Link
-						to={'/login'}
-						className='border-[3px] px-3 py-1 md:px-6 md:py-2 hover:text-white hover:bg-black duration-200 rounded-lg border-[#000000] text-base font-bold font-montserrat'
-					>
-						Войти
+					<Link to={'/login'}>
+						<LinkBtn word={'Войти'} />
 					</Link>
-					<Link
-						to={'/register'}
-						className='border-[3px] px-3 py-1 md:px-6 md:py-2 hover:text-white hover:bg-black duration-200 rounded-lg border-[#000000] text-base font-bold font-montserrat'
-					>
-						Регистрация
+
+					<Link to={'/register'}>
+						<LinkBtn word={'Регистрация'} />
 					</Link>
 				</div>
 			</div>
