@@ -15,17 +15,11 @@ const Navbar = () => {
 						EasyCV
 					</Link>
 					<div className='xs:flex items-center gap-7 hidden'>
-						<Link
-							to={'/login'}
-							className='border-[3px] px-3 py-1 md:px-6 md:py-2 hover:text-white hover:bg-black duration-200 rounded-lg border-[#000000] text-base font-bold font-montserrat'
-						>
-							Войти
+						<Link to={'/login'}>
+							<LinkBtn word={'Войти'} />
 						</Link>
-						<Link
-							to={'/register'}
-							className='border-[3px] px-3 py-1 md:px-6 md:py-2 hover:text-white hover:bg-black duration-200 rounded-lg border-[#000000] text-base font-bold font-montserrat'
-						>
-							Регистрация
+						<Link to={'/register'}>
+							<LinkBtn word={'Регистрация'} />
 						</Link>
 					</div>
 					<FaBars
