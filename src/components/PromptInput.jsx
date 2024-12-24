@@ -18,6 +18,9 @@ const PromptInput = () => {
 
 		// Minimal balandlikni saqlash
 		textarea.style.height = `${Math.max(newHeight, 23)}px`
+
+
+		textarea.scrollTop = textarea.scrollHeight
 	}
 
 	const {
