@@ -19,26 +19,15 @@ const PromptInput = () => {
 		// Minimal balandlikni saqlash
 		textarea.style.height = `${Math.max(newHeight, 23)}px`
 
-		textarea.scrollTop = textarea.scrollHeight
 	}
 
-	const handleFocus = () => {
-		if (textareaRef.current) {
-			// Textarea elementni ko'rinadigan qismga scroll qilish
-			textareaRef.current.scrollIntoView({
-				behavior: 'smooth',
-				block: 'center',
-			})
-			
-
-			window.scrollBy({ top: 400, behavior: 'smooth' })
-		}
-	}
+	
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm()
+
 	const onSubmit = data => {
 		errors?.text?.type == 'required'
 			? toast.success('Successfully created!')
@@ -57,7 +46,6 @@ const PromptInput = () => {
 				placeholder='Пишите тут'
 				className='bg-[#F2F2F2] w-full h-auto resize-none outline-none'
 				type='text'
-				onFocus={handleFocus}
 				// {...register('text', { required: true })}
 			></textarea>
 			<button className='bg-none border-none flex items-end'>
