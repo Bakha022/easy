@@ -21,6 +21,11 @@ const PromptInput = () => {
 
 	}
 
+	const handleFocus = () => {
+		if (!textareaRef.current) return;
+		textareaRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	};
+	
 	
 	const {
 		register,
@@ -43,6 +48,7 @@ const PromptInput = () => {
 				rows={1}
 				ref={textareaRef}
 				onInput={handleInput}
+				onFocus={handleFocus}
 				placeholder='Пишите тут'
 				className='bg-[#F2F2F2] w-full h-auto resize-none outline-none'
 				type='text'
