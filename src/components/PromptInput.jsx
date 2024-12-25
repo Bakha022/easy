@@ -23,6 +23,12 @@ const PromptInput = () => {
 		textarea.scrollTop = textarea.scrollHeight
 	}
 
+	const handleFocus = () => {
+		if (textareaRef.current) {
+			// Textarea elementni ko'rinadigan qismga scroll qilish
+			textareaRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+		}
+	}
 	const {
 		register,
 		formState: { errors },
@@ -46,6 +52,7 @@ const PromptInput = () => {
 				placeholder='Пишите тут'
 				className='bg-[#F2F2F2] w-full h-auto resize-none outline-none'
 				type='text'
+				onFocus={handleFocus}
 				// {...register('text', { required: true })}
 			></textarea>
 			<button className='bg-none border-none flex items-end'>
