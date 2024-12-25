@@ -16,6 +16,7 @@ const App = () => {
 						<Route index element={<HomePage />} />
 						<Route path='/prompt' element={<PromptPage />} />
 					</Route>
+					
 					<Route path='login'  element={<LoginPage/>} />
 					<Route path='register'  element={<RegisterPage/>} />
 

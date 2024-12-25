@@ -18,31 +18,32 @@ const PromptInput = () => {
 
 		// Minimal balandlikni saqlash
 		textarea.style.height = `${Math.max(newHeight, 23)}px`
-
 	}
 
 	const handleFocus = () => {
-		if (!textareaRef.current) return;
-		textareaRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-	};
-	
-	
+		if (!textareaRef.current) return
+		textareaRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+	}
+
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
+		reset,
 	} = useForm()
 
 	const onSubmit = data => {
-		errors?.text?.type == 'required'
-			? toast.success('Successfully created!')
-			: ''
+		console.log(data)
+		toast.success('Successfully created!')
+		reset({ text: '' })
 	}
 
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
-			className='input-section bg-[#F2F2F2] flex flex-row py-4 px-[26px] w-full md:w-[75%] rounded-[20px] justify-betwee'
+			className={`input-section bg-[#F2F2F2] flex flex-row py-4 px-[26px] w-full md:w-[75%] rounded-[20px] justify-betwee  ${
+				errors?.text?.type == 'required' ? 'border-2 border-red-600' : ''
+			}`}
 		>
 			<textarea
 				rows={1}
@@ -52,7 +53,7 @@ const PromptInput = () => {
 				placeholder='Пишите тут'
 				className='bg-[#F2F2F2] w-full h-auto resize-none outline-none'
 				type='text'
-				// {...register('text', { required: true })}
+				{...register('text', { required: true })}
 			></textarea>
 			<button className='bg-none border-none flex items-end'>
 				<FaArrowCircleUp className='cursor-pointer' size={30} />

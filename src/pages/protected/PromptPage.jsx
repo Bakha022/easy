@@ -1,5 +1,5 @@
 import React from 'react'
-import PrompInput from '../../components/PromptInput'
+import PrompInput from '../../components/Forms/PromptInput'
 import Title from '../../components/Title'
 const PromptPage = () => {
 	return (
