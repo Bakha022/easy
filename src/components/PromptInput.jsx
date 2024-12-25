@@ -7,7 +7,7 @@ const PromptInput = () => {
 	const textareaRef = useRef()
 
 	const handleInput = () => {
-		if(!textareaRef.current) return
+		if (!textareaRef.current) return
 		const textarea = textareaRef.current
 
 		// Balandlikni qayta o'rnatish
@@ -19,14 +19,19 @@ const PromptInput = () => {
 		// Minimal balandlikni saqlash
 		textarea.style.height = `${Math.max(newHeight, 23)}px`
 
-
 		textarea.scrollTop = textarea.scrollHeight
 	}
 
 	const handleFocus = () => {
 		if (textareaRef.current) {
 			// Textarea elementni ko'rinadigan qismga scroll qilish
-			textareaRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+			textareaRef.current.scrollIntoView({
+				behavior: 'smooth',
+				block: 'center',
+			})
+			setTimeout(() => {
+				window.scrollBy({ top: 200, behavior: 'smooth' }) // Pastga scroll qilish
+			}, 200)
 		}
 	}
 	const {
@@ -45,8 +50,8 @@ const PromptInput = () => {
 			onSubmit={handleSubmit(onSubmit)}
 			className='input-section bg-[#F2F2F2] flex flex-row py-4 px-[26px] w-full md:w-[75%] rounded-[20px] justify-betwee'
 		>
-			<input type="text" />
-			{/* <textarea
+			input
+			<textarea
 				rows={1}
 				ref={textareaRef}
 				onInput={handleInput}
@@ -55,7 +60,7 @@ const PromptInput = () => {
 				type='text'
 				onFocus={handleFocus}
 				// {...register('text', { required: true })}
-			></textarea> */}
+			></textarea>
 			<button className='bg-none border-none flex items-end'>
 				<FaArrowCircleUp className='cursor-pointer' size={30} />
 			</button>
