@@ -29,9 +29,9 @@ const PromptInput = () => {
 				behavior: 'smooth',
 				block: 'center',
 			})
-			setTimeout(() => {
-				window.scrollBy({ top: 200, behavior: 'smooth' }) // Pastga scroll qilish
-			}, 200)
+			
+
+			window.scrollBy({ top: 400, behavior: 'smooth' })
 		}
 	}
 	const {
@@ -50,7 +50,6 @@ const PromptInput = () => {
 			onSubmit={handleSubmit(onSubmit)}
 			className='input-section bg-[#F2F2F2] flex flex-row py-4 px-[26px] w-full md:w-[75%] rounded-[20px] justify-betwee'
 		>
-			input
 			<textarea
 				rows={1}
 				ref={textareaRef}
