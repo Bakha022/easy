@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { FaArrowCircleUp } from 'react-icons/fa'
 
@@ -10,7 +10,7 @@ const PromptInput = () => {
 		const textarea = textareaRef.current
 		if (!textarea) return
 
-		// Avvalgi balandlikni 83px ga o'rnatish
+		// Avvalgi balandlikni avtomatik qaytarish
 		textarea.style.height = 'auto'
 
 		// Yangi balandlikni hisoblash
@@ -23,13 +23,17 @@ const PromptInput = () => {
 	}
 
 	const {
-		register,
+		control,
 		formState: { errors },
 		handleSubmit,
 		reset,
 	} = useForm()
 
 	const onSubmit = data => {
+		const textarea = textareaRef.current
+		if (!textarea) return
+		textarea.style.height = '20px'
+
 		console.log(data)
 		toast.success('Successfully created!')
 		reset({ text: '' })
@@ -42,17 +46,30 @@ const PromptInput = () => {
 				errors?.text?.type == 'required' ? 'border-2 border-red-600' : ''
 			}`}
 		>
-			<textarea
-				rows={1}
-				ref={textareaRef}
-				onInput={handleInput}
-				onFocus={handleFocus}
-				placeholder='Пишите тут'
-				className='bg-[#F2F2F2] w-full resize-none outline-none overflow-hidden'
-				type='text'
-				{...register('text', { required: true })}
-			></textarea>
-			<button className='bg-none border-none flex items-end'>
+			<Controller
+				name='text'
+				control={control}
+				defaultValue=''
+				rules={{ required: true }}
+				render={({ field }) => (
+					<textarea
+						{...field}
+						rows={1}
+						ref={e => {
+							textareaRef.current = e
+							field.ref(e)
+						}}
+						onInput={e => {
+							handleInput()
+							field.onChange(e)
+						}}
+						onFocus={handleFocus}
+						placeholder='Пишите тут'
+						className='bg-[#F2F2F2] w-full resize-none outline-none overflow-hidden'
+					/>
+				)}
+			/>
+			<button type='submit' className='bg-none border-none flex items-end'>
 				<FaArrowCircleUp className='cursor-pointer' size={30} />
 			</button>
 		</form>
