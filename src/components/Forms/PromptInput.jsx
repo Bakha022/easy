@@ -7,17 +7,14 @@ const PromptInput = () => {
 	const textareaRef = useRef()
 
 	const handleInput = () => {
-		if (!textareaRef.current) return
 		const textarea = textareaRef.current
+		if (!textarea) return
 
-		// Balandlikni qayta o'rnatish
+		// Avvalgi balandlikni 83px ga o'rnatish
 		textarea.style.height = 'auto'
 
-		// Yangi balandlikni o'lchash
-		const newHeight = textarea.scrollHeight
-
-		// Minimal balandlikni saqlash
-		textarea.style.height = `${Math.max(newHeight, 23)}px`
+		// Yangi balandlikni hisoblash
+		textarea.style.height = `${textarea.scrollHeight}px`
 	}
 
 	const handleFocus = () => {
@@ -51,7 +48,7 @@ const PromptInput = () => {
 				onInput={handleInput}
 				onFocus={handleFocus}
 				placeholder='Пишите тут'
-				className='bg-[#F2F2F2] w-full h-auto resize-none outline-none'
+				className='bg-[#F2F2F2] w-full resize-none outline-none overflow-hidden'
 				type='text'
 				{...register('text', { required: true })}
 			></textarea>

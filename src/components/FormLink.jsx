@@ -5,7 +5,7 @@ const FormLink = ({ link, word }) => {
 	return (
 		<Link
 			to={`/${link}`}
-			className='block text-center mt-[26px] text-xl font-semibold leading-9 '
+			className='block text-center mt-[26px] xs:text-xl font-semibold leading-9 '
 		>
 			{word}
 		</Link>

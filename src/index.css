@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
 	background-color: white;
-  min-height: -webkit-fill-available;
+	min-height: -webkit-fill-available;
 }
 
 * {
@@ -23,12 +22,17 @@ body {
 	padding-right: 45px;
 }
 
-
 html {
-  height: -webkit-fill-available;
+	height: -webkit-fill-available;
 }
 
-
-
 .custom {
-	box-shadow: -2.53px 5.91px 7.34px 0px #00000012;}
+	box-shadow: -2.53px 5.91px 7.34px 0px #00000012;
+}
+
+@media only screen and (max-width: 500px) {
+	.container {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+}
