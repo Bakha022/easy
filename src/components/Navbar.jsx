@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import LinkBtn from './LinkBtn'
 const Navbar = () => {
 	const [toogle, setToogle] = useState(false)
-	// console.log(toogle)
 
 	return (
 		<>
@@ -30,22 +29,26 @@ const Navbar = () => {
 				</nav>
 			</div>
 			<div
-				className={`responsive-nav flex flex-col gap-7 bg-white w-full h-full ps-[50px] pe-[50px] fixed top-0  bottom-0 pt-[42px] transition-all duration-150 ${
+				className={`responsive-nav flex flex-col gap-7 bg-white w-full h-full ps-[25px] pe-[25px] fixed top-0  bottom-0 pt-[62px] transition-all duration-150 ${
 					toogle ? 'left-0' : 'left-[-100%]'
 				} xs:hidden`}
 			>
 				<div className='flex justify-between items-center'>
-					<Link to={'/'} className='font-montserrat font-bold text-2xl'>
+					<Link
+						onClick={() => setToogle(false)}
+						to={'/'}
+						className='font-montserrat font-bold text-2xl'
+					>
 						EasyCV
 					</Link>
-					<MdCancel onClick={() => setToogle(false)} size={24} />
+					<MdCancel onClick={() => setToogle(false)} size={26} />
 				</div>
 				<div className='flex flex-col items-start gap-7'>
-					<Link to={'/login'}>
+					<Link onClick={() => setToogle(false)} to={'/login'}>
 						<LinkBtn word={'Войти'} />
 					</Link>
 
-					<Link to={'/register'}>
+					<Link onClick={() => setToogle(false)} to={'/register'}>
 						<LinkBtn word={'Регистрация'} />
 					</Link>
 				</div>
