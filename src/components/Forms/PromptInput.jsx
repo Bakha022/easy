@@ -70,7 +70,7 @@ const PromptInput = () => {
 				)}
 			/>
 			<button type='submit' className='bg-none border-none flex items-end'>
-				<FaArrowCircleUp className='cursor-pointer' size={30} />
+				<FaArrowCircleUp color='#207DFF' className='cursor-pointer' size={30} />
 			</button>
 		</form>
 	)

@@ -1,0 +1,9 @@
+{/* <div className='flex flex-col justify-between gap-7 mt-[133px] xs:mt-[273px] items-center'>
+<Title title={'Хотите быстро сделать резюме?'} />
+<button
+onClick={toTry}
+className='py-[12px] px-[20px]  xs:py-[14px] xs:px-[25px] border-[3px] rounded-lg border-[#000000] bg-black text-white font-montserrat text-xl xs:text-2xl  leading-[29px] font-bold hover:bg-white duration-200 hover:text-black'
+>
+Попробовать
+</button>
+</div> */} -- killed component!

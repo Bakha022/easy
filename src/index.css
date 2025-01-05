@@ -57,10 +57,20 @@ html {
 	}
 }
 
-
-
 @media only screen and (max-width: 375px) {
 	.hero-img {
 		max-width: 280px;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.number-content {
+		margin-top: 500px;
+	}
+}
+
+@media only screen and (max-width: 1023px) {
+	.number-content {
+		margin-top: 0;
 	}
 }
