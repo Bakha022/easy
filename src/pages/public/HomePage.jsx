@@ -17,10 +17,11 @@ const HomePage = () => {
 					Попробовать
 				</button>
 			</div> */}
-			<div className='flex mt-[160px] items-start w-full relative h-[100vh]'>
+			<div className='flex flex-col gap-[40px] lg:flex mt-10 sm:mt-[100px] md:mt-[160px] items-start w-full'>
 				<div className='flex flex-col items-start gap-8'>
-					<h1 className='font-montserrat leading-[58px] text-5xl md:w-[665px] font-bold'>
-						Сделай хорошое резюме за <span>2 минуты</span>
+					<h1 className='font-montserrat text-2xl leading-7 md:leading-[58px] sm:text-4xl md:text-5xl md:w-[665px] font-bold'>
+						Сделай хорошое резюме за{' '}
+						<span className='text-[#207DFF]'>2 минуты</span>
 					</h1>
 					<button
 						onClick={toTry}
@@ -29,7 +30,13 @@ const HomePage = () => {
 						Попробовать
 					</button>
 				</div>
-				<img className='absolute top-[-200px] right-[0px]' src="hero.png" alt="hero-img" />
+				<div className='mx-auto'>
+					<img
+						className='text-end lg:absolute w-[900px] top-[200px] right-[100px] hero-img'
+						src='he.webp'
+						alt='hero-img'
+					/>
+				</div>
 			</div>
 		</div>
 	)

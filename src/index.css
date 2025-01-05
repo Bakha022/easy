@@ -36,3 +36,31 @@ html {
 		padding-right: 25px;
 	}
 }
+
+@media only screen and (max-width: 1200px) {
+	.hero-img {
+		max-width: 700px;
+		right: 0;
+	}
+}
+
+@media only screen and (max-width: 985px) {
+	.hero-img {
+		max-width: 500px;
+		right: 0;
+	}
+}
+
+@media only screen and (max-width: 579px) {
+	.hero-img {
+		max-width: 300px;
+	}
+}
+
+
+
+@media only screen and (max-width: 375px) {
+	.hero-img {
+		max-width: 280px;
+	}
+}
