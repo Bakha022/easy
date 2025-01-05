@@ -1,5 +1,6 @@
 import React from 'react'
 
+import AboutContent from '../../components/AboutContent'
 import Hero from '../../components/Hero'
 import NumContent from '../../components/NumContent'
 
@@ -8,6 +9,7 @@ const HomePage = () => {
 		<>
 			<Hero />
 			<NumContent />
+			<AboutContent />
 		</>
 	)
 }
