@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 
 const Layout = () => {
 	return (
-		<div className='py-5 overflow-auto'>
+		<div className='pt-5 overflow-auto'>
 			<Navbar />
 			<Outlet />
 		</div>

@@ -9,7 +9,7 @@ const Hero = () => {
 
 	return (
 		<div className='container'>
-			<div className='flex flex-col gap-[40px] lg:flex mt-10 sm:mt-[100px] md:mt-[160px] items-start w-full'>
+			<div className='flex flex-col gap-[40px] lg:flex mt-[60px] sm:mt-[100px] md:mt-[160px] items-start w-full'>
 				<div className='flex flex-col items-start gap-8'>
 					<h1 className='font-montserrat text-2xl leading-7 md:leading-[58px] sm:text-4xl md:text-5xl md:w-[665px] font-bold'>
 						Сделай хорошое резюме за{' '}

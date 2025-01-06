@@ -22,6 +22,7 @@ const Navbar = () => {
 						</Link>
 					</div>
 					<FaBars
+						color='#207DFF'
 						onClick={() => setToogle(true)}
 						className={`${toogle ? 'hidden' : 'block'} xs:hidden`}
 						size={24}
@@ -41,7 +42,11 @@ const Navbar = () => {
 					>
 						EasyCV
 					</Link>
-					<MdCancel onClick={() => setToogle(false)} size={26} />
+					<MdCancel
+						color='#207DFF'
+						onClick={() => setToogle(false)}
+						size={26}
+					/>
 				</div>
 				<div className='flex flex-col items-start gap-7'>
 					<Link onClick={() => setToogle(false)} to={'/login'}>
