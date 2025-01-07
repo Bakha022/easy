@@ -22,7 +22,7 @@ const Navbar = () => {
 						</Link>
 					</div>
 					<FaBars
-						color='#207DFF'
+						color=''
 						onClick={() => setToogle(true)}
 						className={`${toogle ? 'hidden' : 'block'} xs:hidden`}
 						size={24}
@@ -43,7 +43,7 @@ const Navbar = () => {
 						EasyCV
 					</Link>
 					<MdCancel
-						color='#207DFF'
+						color=''
 						onClick={() => setToogle(false)}
 						size={26}
 					/>

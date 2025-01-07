@@ -5,7 +5,7 @@ const AboutItem = ({ item }) => {
 
 	return (
 		<div className='flex flex-col text-center items-center  sm:items-start gap-5 md:w-[241px] justify-start'>
-			{item.img ? (
+			{item?.img ? (
 				<img src={item.img} alt='icon' />
 			) : (
 				<p className='text-[100px] leading-0'>{item.icon}</p>

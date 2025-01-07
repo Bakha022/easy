@@ -12,7 +12,7 @@ const FooterForm = () => {
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
-			className='w-[80%] md:w-[649px] shadow-custom rounded-[30px] mx-auto py-9 px-[25px] sm:px-[70px] absolute bg-white top-[-400px] md:top-[-440px]'
+			className='w-[80%] md:w-[649px] shadow-custom rounded-[30px] mx-auto py-9 px-[35px] sm:px-[70px] absolute bg-white top-[-400px] md:top-[-440px]'
 		>
 			<h3 className='font-montserrat font-semibold text-2xl sm:text-3xl  md:text-4xl  mb-4  md:mb-[90px] leading-7 sm:leading-10 text-center'>
 				Связаться с нами
