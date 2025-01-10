@@ -1,5 +1,5 @@
 import axios from 'axios'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import toast from 'react-hot-toast'
 import { __END_POINT, TOKEN } from '../utils'
 
@@ -10,7 +10,7 @@ const request = axios.create({
 
 request.interceptors.request.use(
 	function (response) {
-		const token = Cookies.get(TOKEN)
+		const token = localStorage.getItem(TOKEN)
 		response.headers.Authorization = `Bearer ${token}`
 		return response
 	},

@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import {useNavigate} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
 import Button from '../Button'
 
+
 const LoginForm = () => {
+	const navigate = useNavigate()
+	const dispatch = useDispatch()
+	const {loading} = useSelector(state=> state.auth)
+
+	
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
+		reset,
 	} = useForm()
-	const onSubmit = data => console.log(data)
+
+	const onSubmit = async values => {
+		console.log(values)
+	}
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
@@ -17,9 +29,9 @@ const LoginForm = () => {
 			<input
 				type='text'
 				className={`w-full text-xl font-medium leading-[42px] montserrat text-center  xs:text-[28px] border-b-[3px] placeholder-[#00000066]  border-[#00000066] ${
-					errors.userName ? 'placeholder-red-500 border-red-500' : ''
+					errors.username ? 'placeholder-red-500 border-red-500' : ''
 				} `}
-				{...register('userName', { required: true })}
+				{...register('username', { required: true })}
 				placeholder='Username'
 			/>
 			<input
@@ -30,7 +42,7 @@ const LoginForm = () => {
 				{...register('password', { required: true })}
 				placeholder='Password'
 			/>
-			<Button word={'Войти'} />
+			<Button type="submit" word={'Войти'} />
 		</form>
 	)
 }
