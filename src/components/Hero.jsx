@@ -25,7 +25,7 @@ const Hero = () => {
 				<div className='mx-auto'>
 					<img
 						className='text-end lg:absolute w-[900px] top-[200px] right-[100px] hero-img'
-						src='resumePerson.webp'
+						src='web.webp'
 						alt='hero-img'
 					/>
 				</div>

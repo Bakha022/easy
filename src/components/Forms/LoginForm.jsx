@@ -1,16 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
-import {useNavigate} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import request from '../../services/request'
 import Button from '../Button'
-
 
 const LoginForm = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const {loading} = useSelector(state=> state.auth)
+	const { loading } = useSelector(state => state.auth)
 
-	
 	const {
 		register,
 		formState: { errors },
@@ -19,7 +18,14 @@ const LoginForm = () => {
 	} = useForm()
 
 	const onSubmit = async values => {
-		console.log(values)
+		// dispatch(login({ credentials: values, navigate }))
+		// reset()
+		try {
+			const data = await request.post('account/login', values)
+			console.log(data)
+		} finally {
+			console.log('hello')
+		}
 	}
 	return (
 		<form
@@ -42,7 +48,7 @@ const LoginForm = () => {
 				{...register('password', { required: true })}
 				placeholder='Password'
 			/>
-			<Button type="submit" word={'Войти'} />
+			<Button type='submit' word={'Войти'} />
 		</form>
 	)
 }

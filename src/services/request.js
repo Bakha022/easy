@@ -8,27 +8,27 @@ const request = axios.create({
 	timeout: 10000,
 })
 
-request.interceptors.request.use(
-	function (response) {
-		const token = localStorage.getItem(TOKEN)
-		response.headers.Authorization = `Bearer ${token}`
-		return response
-	},
-	function (error) {
-		return Promise.reject(error)
-	}
-)
+// request.interceptors.request.use(
+// 	function (response) {
+// 		const token = localStorage.getItem(TOKEN)
+// 		response.headers.Authorization = `Bearer ${token}`
+// 		return response
+// 	},
+// 	function (error) {
+// 		return Promise.reject(error)
+// 	}
+// )
 
-request.interceptors.response.use(
-	function (response) {
-		return response
-	},
-	function (error) {
-		if (error.response && error.response.data) {
-			toast.error(error.response.data)
-		}
-		return Promise.reject(error)
-	}
-)
+// request.interceptors.response.use(
+// 	function (response) {
+// 		return response
+// 	},
+// 	function (error) {
+// 		if (error.response && error.response.data) {
+// 			toast.error(error.response.data)
+// 		}
+// 		return Promise.reject(error)
+// 	}
+// )
 
 export default request

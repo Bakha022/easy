@@ -8,9 +8,9 @@ const initialState = {
 }
 
 export const login = createAsyncThunk(
-	'account/login/',
+	'/account/login',
 	async ({ credentials, navigate }) => {
-		const { data } = await request.post('account/login', credentials)
+		const { data } = await request.post('/account/login', credentials)
 		const { tokens } = data.data
 		console.log(tokens)
 		navigate('/')
@@ -36,19 +36,15 @@ const authSlice = createSlice({
 				state.loading = false
 				state.token = payload.token
 			})
-			.addCase(login.rejected, state=> {
+			.addCase(login.rejected, state => {
 				state.loading = false
 			})
 	},
 })
 
+const { actions, reducer, name } = authSlice
 
-
-const {actions, reducer, name} = authSlice
-
-
-
-export const {logout} = actions
+export const { logout } = actions
 
 export const authName = name
 
