@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import toast from 'react-hot-toast'
 import request from '../../services/request'
-import { TOKEN } from '../../utils/'
+import { REFRESH_TOKEN, TOKEN } from '../../utils/'
 
 const initialState = {
 	token: JSON.parse(localStorage.getItem(TOKEN)) || null,
@@ -8,12 +9,23 @@ const initialState = {
 }
 
 export const login = createAsyncThunk(
-	'/account/login',
+	'/account/login/',
 	async ({ credentials, navigate }) => {
-		const { data } = await request.post('/account/login', credentials)
-		const { tokens } = data.data
-		console.log(tokens)
+		const data = await request.post('/account/login/', credentials, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+
+		const { tokens } = data.data?.data
+		const { access, refresh } = tokens
+		// console.log(access, refresh);
+
+		localStorage.setItem(TOKEN, JSON.stringify(access))
+		localStorage.setItem(REFRESH_TOKEN, JSON.stringify(refresh))
 		navigate('/')
+
+		return { token: access }
 	}
 )
 
@@ -31,13 +43,18 @@ const authSlice = createSlice({
 		builder
 			.addCase(login.pending, state => {
 				state.loading = true
+				toast.loading('Loading...')
 			})
 			.addCase(login.fulfilled, (state, { payload }) => {
 				state.loading = false
 				state.token = payload.token
+				toast.dismiss()
+				toast.success('Login successful!')
 			})
 			.addCase(login.rejected, state => {
 				state.loading = false
+				toast.dismiss()
+				toast.error(payload || 'Something went wrong')
 			})
 	},
 })

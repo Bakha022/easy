@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import request from '../../services/request'
+import { login } from '../../redux/slice/auth'
 import Button from '../Button'
 
 const LoginForm = () => {
@@ -18,15 +18,10 @@ const LoginForm = () => {
 	} = useForm()
 
 	const onSubmit = async values => {
-		// dispatch(login({ credentials: values, navigate }))
-		// reset()
-		try {
-			const data = await request.post('account/login', values)
-			console.log(data)
-		} finally {
-			console.log('hello')
-		}
+		dispatch(login({ credentials: values, navigate }))
+		reset()
 	}
+
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
