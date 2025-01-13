@@ -3,8 +3,11 @@ import { FaBars } from 'react-icons/fa'
 import { MdCancel } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import LinkBtn from './LinkBtn'
+import { useSelector } from 'react-redux'
 const Navbar = () => {
 	const [toogle, setToogle] = useState(false)
+	// const {logout} = useSelector()
+	// const {user} = useSelector()
 
 	return (
 		<>
@@ -20,6 +23,11 @@ const Navbar = () => {
 						<Link to={'/register'}>
 							<LinkBtn word={'Регистрация'} />
 						</Link>
+						{
+							<Link to={'/'}>
+								<LinkBtn word={'Выйти'} />
+							</Link>
+						}
 					</div>
 					<FaBars
 						color=''
@@ -42,11 +50,7 @@ const Navbar = () => {
 					>
 						EasyCV
 					</Link>
-					<MdCancel
-						color=''
-						onClick={() => setToogle(false)}
-						size={26}
-					/>
+					<MdCancel color='' onClick={() => setToogle(false)} size={26} />
 				</div>
 				<div className='flex flex-col items-start gap-7'>
 					<Link onClick={() => setToogle(false)} to={'/login'}>

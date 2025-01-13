@@ -19,7 +19,6 @@ export const login = createAsyncThunk(
 
 		const { tokens } = data.data?.data
 		const { access, refresh } = tokens
-		// console.log(access, refresh);
 
 		localStorage.setItem(TOKEN, JSON.stringify(access))
 		localStorage.setItem(REFRESH_TOKEN, JSON.stringify(refresh))

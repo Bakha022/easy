@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../redux/slice/auth'
 import Button from '../Button'
@@ -8,7 +8,7 @@ import Button from '../Button'
 const LoginForm = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const { loading } = useSelector(state => state.auth)
+	// const { loading } = useSelector(state => state.auth)
 
 	const {
 		register,
