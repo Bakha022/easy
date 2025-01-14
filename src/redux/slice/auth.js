@@ -22,7 +22,7 @@ export const login = createAsyncThunk(
 
 		localStorage.setItem(TOKEN, JSON.stringify(access))
 		localStorage.setItem(REFRESH_TOKEN, JSON.stringify(refresh))
-		navigate('/')
+		navigate('/prompt')
 
 		return { token: access }
 	}
@@ -32,10 +32,10 @@ const authSlice = createSlice({
 	initialState,
 	name: 'auth',
 	reducers: {
-		logout(state, { payload: navigate }) {
+		logout(state) {
 			state.token = null
 			localStorage.removeItem(TOKEN)
-			navigate('/')
+			localStorage.removeItem(REFRESH_TOKEN)
 		},
 	},
 	extraReducers: builder => {

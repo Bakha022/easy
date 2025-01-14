@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { MdCancel } from 'react-icons/md'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { authName, logout } from '../redux/slice/auth'
 import LinkBtn from './LinkBtn'
-import { useSelector } from 'react-redux'
 const Navbar = () => {
 	const [toogle, setToogle] = useState(false)
-	// const {logout} = useSelector()
-	// const {user} = useSelector()
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+	const token = useSelector(state => state[authName].token)
 
 	return (
 		<>
@@ -17,17 +19,20 @@ const Navbar = () => {
 						EasyCV
 					</Link>
 					<div className='xs:flex items-center gap-7 hidden'>
-						<Link to={'/login'}>
-							<LinkBtn word={'Войти'} />
-						</Link>
-						<Link to={'/register'}>
-							<LinkBtn word={'Регистрация'} />
-						</Link>
-						{
-							<Link to={'/'}>
+						{token ? (
+							<div onClick={() => dispatch(logout(navigate()))}>
 								<LinkBtn word={'Выйти'} />
-							</Link>
-						}
+							</div>
+						) : (
+							<>
+								<Link to={'/login'}>
+									<LinkBtn word={'Войти'} />
+								</Link>
+								<Link to={'/register'}>
+									<LinkBtn word={'Регистрация'} />
+								</Link>
+							</>
+						)}
 					</div>
 					<FaBars
 						color=''
