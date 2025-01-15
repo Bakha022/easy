@@ -8,6 +8,26 @@ const initialState = {
 	loading: false,
 }
 
+export const register = createAsyncThunk(
+	'/account/register/',
+	async ({ credentials, navigate }) => {
+		const data = await request.post('/account/login/', credentials, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+
+		const { tokens } = data.data?.data
+		const { access, refresh } = tokens
+
+		localStorage.setItem(TOKEN, JSON.stringify(access))
+		localStorage.setItem(REFRESH_TOKEN, JSON.stringify(refresh))
+		navigate('/prompt')
+
+		return { token: access }
+	}
+)
+
 export const login = createAsyncThunk(
 	'/account/login/',
 	async ({ credentials, navigate }) => {
@@ -52,8 +72,19 @@ const authSlice = createSlice({
 			})
 			.addCase(login.rejected, state => {
 				state.loading = false
+			})
+			.addCase(register.pending, state => {
+				state.loading = true
+				toast.loading('Registering...')
+			})
+			.addCase(register.fulfilled, (state, { payload }) => {
+				state.loading = false
+				state.token = payload.token
 				toast.dismiss()
-				toast.error(payload || 'Something went wrong')
+				toast.success('Register successful!')
+			})
+			.addCase(register.rejected, state => {
+				state.loading = false
 			})
 	},
 })
