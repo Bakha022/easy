@@ -11,7 +11,7 @@ import RegisterPage from './pages/public/RegisterPage'
 import { authName } from './redux/slice/auth'
 
 const App = () => {
-	const token = useSelector(state => state[authName].token)
+	const {token} = useSelector(state => state[authName])
 	return (
 		<BrowserRouter>
 			<Routes>

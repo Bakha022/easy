@@ -1,14 +1,25 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { contact, contactName } from '../../redux/slice/contact'
 import Button from '../Button'
 
 const FooterForm = () => {
+	const dispatch = useDispatch()
+	const { loading } = useSelector(state => state[contactName])
+
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
+		reset,
 	} = useForm()
-	const onSubmit = data => console.log(data)
+
+	const onSubmit = data => {
+		dispatch(contact({ credentials: data }))
+		reset()
+	}
+
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
@@ -25,7 +36,7 @@ const FooterForm = () => {
 						errors.name
 							? 'border-red-500 placeholder:text-red-500 '
 							: 'border-black placeholder:text-black '
-					} border-solid w-full  md:w-[165px] text-black'
+					} border-solid w-full  md:w-[185px] text-black'
 					type='text`}
 				/>
 				<input
@@ -50,7 +61,10 @@ const FooterForm = () => {
 				/>
 			</div>
 			<div className='flex justify-center'>
-				<Button word={'Отправить'} />
+				<Button
+					loading={loading}
+					word={loading ? 'Загрузка...' : 'Отправить'}
+				/>
 			</div>
 		</form>
 	)

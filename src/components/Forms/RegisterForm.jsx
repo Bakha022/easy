@@ -1,24 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import toast from 'react-hot-toast'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { register as registerForm } from '../../redux/slice/auth'
+import { authName, register as registerForm } from '../../redux/slice/auth'
 import Button from '../Button'
 
 const RegisterForm = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
+	const { loading } = useSelector(state => state[authName])
+
 	const {
 		register,
-		formState: { errors },
+		formState: { errors, isSubmitted },
 		handleSubmit,
-		reset,
 	} = useForm()
 
 	const onSubmit = async data => {
 		dispatch(registerForm({ credentials: data, navigate }))
-		reset()
 	}
+
+	useEffect(() => {
+		if (errors.password && isSubmitted) {
+			toast.error('Пароль должен содержать не менее 6 символов')
+		}
+	}, [errors.password, isSubmitted])
 
 	return (
 		<form
@@ -39,7 +46,7 @@ const RegisterForm = () => {
 					errors.password ? 'placeholder-red-500 border-red-500' : ''
 				} `}
 				placeholder='Password'
-				{...register('password', { required: true })}
+				{...register('password', { required: true, minLength: 6 })}
 			/>
 			<input
 				type='password'
@@ -49,7 +56,7 @@ const RegisterForm = () => {
 				placeholder='Confirm password'
 				{...register('password2', { required: true })}
 			/>
-			<Button word={'Регистрация'} />
+			<Button loading={loading} word={'Регистрация'} />
 		</form>
 	)
 }

@@ -1,25 +1,23 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { login } from '../../redux/slice/auth'
+import { authName, login } from '../../redux/slice/auth'
 import Button from '../Button'
 
 const LoginForm = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	// const { loading } = useSelector(state => state.auth)
+	const { loading } = useSelector(state => state[authName])
 
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
-		reset,
 	} = useForm()
 
 	const onSubmit = async values => {
 		dispatch(login({ credentials: values, navigate }))
-		reset()
 	}
 
 	return (
@@ -43,7 +41,7 @@ const LoginForm = () => {
 				{...register('password', { required: true })}
 				placeholder='Password'
 			/>
-			<Button type='submit' word={'Войти'} />
+			<Button type='submit' word={loading ? 'Загрузка...' : 'Войти'} />
 		</form>
 	)
 }

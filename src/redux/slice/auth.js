@@ -11,7 +11,7 @@ const initialState = {
 export const register = createAsyncThunk(
 	'/account/register/',
 	async ({ credentials, navigate }) => {
-		const data = await request.post('/account/login/', credentials, {
+		const data = await request.post('/account/register/', credentials, {
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -62,26 +62,22 @@ const authSlice = createSlice({
 		builder
 			.addCase(login.pending, state => {
 				state.loading = true
-				toast.loading('Loading...')
 			})
 			.addCase(login.fulfilled, (state, { payload }) => {
 				state.loading = false
 				state.token = payload.token
-				toast.dismiss()
-				toast.success('Login successful!')
+				toast.success('Вход выполнен успешно!')
 			})
 			.addCase(login.rejected, state => {
 				state.loading = false
 			})
 			.addCase(register.pending, state => {
 				state.loading = true
-				toast.loading('Registering...')
 			})
 			.addCase(register.fulfilled, (state, { payload }) => {
 				state.loading = false
 				state.token = payload.token
-				toast.dismiss()
-				toast.success('Register successful!')
+				toast.success('Регистрация прошла успешно!')
 			})
 			.addCase(register.rejected, state => {
 				state.loading = false

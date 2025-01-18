@@ -6,10 +6,10 @@ import './index.css'
 import StoreProvider from './redux/store/index.jsx'
 
 createRoot(document.getElementById('root')).render(
-	<StrictMode>
+	<>
 		<StoreProvider>
 			<App />
 			<Toaster />
 		</StoreProvider>
-	</StrictMode>
+	</>
 )
