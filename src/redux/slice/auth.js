@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import toast from 'react-hot-toast'
 import request from '../../services/request'
-import { REFRESH_TOKEN, TOKEN } from '../../utils/'
+import { REFRESH_TOKEN, TOKEN, USER } from '../../utils/'
+import Cookies from 'js-cookie'
 
 const initialState = {
 	token: JSON.parse(localStorage.getItem(TOKEN)) || null,
@@ -56,6 +57,7 @@ const authSlice = createSlice({
 			state.token = null
 			localStorage.removeItem(TOKEN)
 			localStorage.removeItem(REFRESH_TOKEN)
+			Cookies.remove(USER)
 		},
 	},
 	extraReducers: builder => {

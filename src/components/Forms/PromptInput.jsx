@@ -1,9 +1,13 @@
 import React, { useRef } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
 import { FaArrowCircleUp } from 'react-icons/fa'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { promptName, promptUser } from '../../redux/slice/prompt'
 const PromptInput = () => {
+	const dispatch = useDispatch()
+	const { loading, data } = useSelector(state => state[promptName])
+	const navigate = useNavigate()
 	const textareaRef = useRef()
 
 	const handleInput = () => {
@@ -29,25 +33,19 @@ const PromptInput = () => {
 		reset,
 	} = useForm()
 
-	const onSubmit = data => {
-		const textarea = textareaRef.current
-		if (!textarea) return
-		textarea.style.height = '20px'
-
-		console.log(data)
-		toast.success('Successfully created!')
-		reset({ text: '' })
+	const onSubmit = async data => {
+		dispatch(promptUser({ credentials: data, navigate }))
 	}
 
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
 			className={`input-section bg-[#F2F2F2] flex flex-row py-4 px-[26px] w-full md:w-[75%] rounded-[20px] justify-betwee  ${
-				errors?.text?.type == 'required' ? 'border-2 border-red-600' : ''
+				errors?.prompt?.type == 'required' ? 'border-2 border-red-600' : ''
 			}`}
 		>
 			<Controller
-				name='text'
+				name='prompt'
 				control={control}
 				defaultValue=''
 				rules={{ required: true }}

@@ -1,5 +1,5 @@
 	import axios from 'axios'
-	// import Cookies from 'js-cookie';
+	
 	import toast from 'react-hot-toast'
 	import { __END_POINT, TOKEN } from '../utils'
 

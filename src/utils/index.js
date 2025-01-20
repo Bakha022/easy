@@ -1,6 +1,7 @@
-const __END_POINT = 'http://185.189.14.173/'
+const __END_POINT = 'http://45.92.173.137'
 
 const TOKEN = 'token'
 const REFRESH_TOKEN = 'refreshToken'
+const USER = 'user'
 
-export  { TOKEN, REFRESH_TOKEN, __END_POINT }
+export { __END_POINT, REFRESH_TOKEN, TOKEN, USER }
