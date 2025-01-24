@@ -1,20 +1,20 @@
 import React from 'react'
 
-import { useSelector } from 'react-redux'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import RequireAuth from './components/RequireAuth'
+import { USER } from './constants'
 import PromptPage from './pages/protected/PromptPage'
 import PromptResultPage from './pages/protected/PromptResPage'
 import HomePage from './pages/public/HomePage'
 import LoginPage from './pages/public/LoginPage'
 import RegisterPage from './pages/public/RegisterPage'
-import { authName } from './redux/slice/auth'
-import { promptName } from './redux/slice/prompt'
 
 const App = () => {
-	const { token } = useSelector(state => state[authName])
-	const { data } = useSelector(state => state[promptName])
+	// const { token } = useSelector(state => state[authName])
+	// const { data } = useSelector(state => state[promptName])
+	const user = JSON.parse(localStorage.getItem(USER))
+
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -33,7 +33,7 @@ const App = () => {
 							<Route
 								path='/result'
 								element={
-									data ? <PromptResultPage /> : <Navigate to={'/prompt'} />
+									user ? <PromptResultPage /> : <Navigate to={'/prompt'} />
 								}
 							/>
 						</>

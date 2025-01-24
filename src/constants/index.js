@@ -27,3 +27,47 @@ export const aboutData = [
 		text: 'На этом все готово. Вы сможете изменить или сразу же скачать как pdf, и еще снизу будут настоящие вакансии исходя из вашей профессии',
 	},
 ]
+
+export const vacancies = [
+	{
+		payment: '10.000.000-15.000.000 сум',
+		company: 'EPAM Systems',
+		vacancies: 'Middle python developer',
+	},
+	{
+		payment: '10.000.000-15.000.000 сум',
+		company: 'EPAM Systems',
+		vacancies: 'Middle python developer',
+	},
+	{
+		payment: '10.000.000-15.000.000 сум',
+		company: 'EPAM Systems',
+		vacancies: 'Middle python developer',
+	},
+	{
+		payment: '10.000.000-15.000.000 сум',
+		company: 'EPAM Systems',
+		vacancies: 'Middle python developer',
+	},
+	{
+		payment: '10.000.000-15.000.000 сум',
+		company: 'EPAM Systems',
+		vacancies: 'Middle python developer',
+	},
+	{
+		payment: '10.000.000-15.000.000 сум',
+		company: 'EPAM Systems',
+		vacancies: 'Middle python developer',
+	},
+]
+
+
+
+
+const __END_POINT = 'http://45.92.173.137'
+
+const TOKEN = 'token'
+const REFRESH_TOKEN = 'refreshToken'
+const USER = 'user'
+
+export { __END_POINT, REFRESH_TOKEN, TOKEN, USER }

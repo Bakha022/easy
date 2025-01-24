@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import Cookies from 'js-cookie'
+import { USER } from '../../constants'
 import request from '../../services/request'
-import { USER } from '../../utils'
 
 const initialState = {
-	data: Cookies.get(USER) || null,
+	data: JSON.parse(localStorage.getItem(USER)) || null,
 	loading: false,
 }
 
@@ -16,7 +15,6 @@ export const promptUser = createAsyncThunk(
 			timeout: 30000,
 		})
 		navigate('/result')
-		Cookies.set(USER, response?.data)
 		return response?.data
 	}
 )
@@ -33,6 +31,7 @@ const promptSlice = createSlice({
 			.addCase(promptUser.fulfilled, (state, { payload }) => {
 				state.loading = false
 				state.data = payload
+				localStorage.setItem(USER, JSON.stringify(state.data))
 			})
 			.addCase(promptUser.rejected, state => {
 				state.loading = false

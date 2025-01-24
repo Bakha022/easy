@@ -1,15 +1,13 @@
 import React, { useRef } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { FaArrowCircleUp } from 'react-icons/fa'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { promptName, promptUser } from '../../redux/slice/prompt'
-const PromptInput = () => {
+import { promptUser } from '../../redux/slice/prompt'
+const PromptInput = ({ word }) => {
 	const dispatch = useDispatch()
-	const { loading, data } = useSelector(state => state[promptName])
 	const navigate = useNavigate()
 	const textareaRef = useRef()
-
 	const handleInput = () => {
 		const textarea = textareaRef.current
 		if (!textarea) return
@@ -47,10 +45,11 @@ const PromptInput = () => {
 			<Controller
 				name='prompt'
 				control={control}
-				defaultValue=''
+				defaultValue={word || ''}
 				rules={{ required: true }}
 				render={({ field }) => (
 					<textarea
+						value={word}
 						{...field}
 						rows={1}
 						ref={e => {

@@ -1,7 +1,7 @@
 	import axios from 'axios'
 	
 	import toast from 'react-hot-toast'
-	import { __END_POINT, TOKEN } from '../utils'
+	import { __END_POINT, TOKEN } from '../constants'
 
 	const request = axios.create({
 		baseURL: __END_POINT,
