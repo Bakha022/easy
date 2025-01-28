@@ -1,13 +1,16 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { FaArrowCircleUp } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { promptUser } from '../../redux/slice/prompt'
+
 const PromptInput = ({ word }) => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const textareaRef = useRef()
+
+	// Textarea balandligini moslash
 	const handleInput = () => {
 		const textarea = textareaRef.current
 		if (!textarea) return
@@ -35,10 +38,15 @@ const PromptInput = ({ word }) => {
 		dispatch(promptUser({ credentials: data, navigate }))
 	}
 
+	// useEffect orqali word o'zgarganda textarea balandligini moslash
+	useEffect(() => {
+		handleInput()
+	}, [word]) // word o'zgarganda qayta ishga tushadi
+
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
-			className={`input-section bg-[#F2F2F2] flex flex-row py-4 px-[26px] w-full md:w-[75%] rounded-[20px] justify-betwee  ${
+			className={`input-section bg-[#F2F2F2] flex flex-row py-4 px-[26px] w-full md:w-[75%] rounded-[20px] justify-between ${
 				errors?.prompt?.type == 'required' ? 'border-2 border-red-600' : ''
 			}`}
 		>

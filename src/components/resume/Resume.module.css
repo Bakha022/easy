@@ -13,7 +13,7 @@
 	margin-bottom: 40px;
 }
 
-/* Header */
+
 header {
 	margin-bottom: 1.5rem;
 }
@@ -29,7 +29,7 @@ header p {
 	margin: 0.5rem 0 0;
 }
 
-/* Section Styles */
+
 section {
 	margin-bottom: 1.5rem;
 }
@@ -38,7 +38,7 @@ section h2 {
 	font-size: 1.25rem;
 	font-weight: 600;
 	border-bottom: 1px solid #e5e7eb;
-	padding-bottom: 0.5rem;
+	padding-bottom: 10px;
 	margin-bottom: 1rem;
 }
 
@@ -46,7 +46,6 @@ section p {
 	color: #374151;
 }
 
-/* Professional Experience */
 .professional-experience {
 	margin-top: 1rem;
 }
@@ -67,12 +66,12 @@ section p {
 }
 
 .professional-experience ul {
-	list-style-type: disc;
-	margin: 15px 1.5rem;
+	list-style-type: none;
 	color: #4b5563;
+	margin-bottom: 10px;
 }
 
-/* Skills */
+
 .skills {
 	display: flex;
 	flex-wrap: wrap;
@@ -80,14 +79,7 @@ section p {
 	margin-top: 1rem;
 }
 
-.skills .skill-item {
-	padding: 0.5rem 1rem;
-	background-color: #e5e7eb;
-	color: #374151;
-	border-radius: 9999px;
-}
 
-/* Education */
 .education {
 	margin-top: 1rem;
 }
