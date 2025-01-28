@@ -20,7 +20,7 @@ const Vacancies = () => {
 		}
 
 		getData(data?.id)
-	}, [data?.id])
+	}, [])
 
 	return (
 		<div>

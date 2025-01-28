@@ -11,6 +11,10 @@ const Navbar = () => {
 	const navigate = useNavigate()
 	const token = useSelector(state => state[authName].token)
 
+	const handleClose = () => {
+		setToogle(false)
+		window.scrollTo(0, 0)
+	}
 	return (
 		<>
 			<div className='container'>
@@ -43,26 +47,26 @@ const Navbar = () => {
 				</nav>
 			</div>
 			<div
-				className={`responsive-nav flex flex-col gap-7 bg-white w-full h-full ps-[25px] pe-[25px] fixed top-0  bottom-0 pt-[62px] transition-all duration-150 ${
+				className={`responsive-nav flex flex-col gap-7 bg-white w-full h-full ps-[25px] pe-[25px] fixed top-0  bottom-0 pt-[62px] z-30 transition-all duration-150 ${
 					toogle ? 'left-0' : 'left-[-100%]'
 				} xs:hidden`}
 			>
 				<div className='flex justify-between items-center'>
 					<Link
-						onClick={() => setToogle(false)}
+						onClick={handleClose}
 						to={'/'}
 						className='font-montserrat font-bold text-2xl'
 					>
 						EasyCV
 					</Link>
-					<MdCancel color='' onClick={() => setToogle(false)} size={26} />
+					<MdCancel color='' onClick={handleClose} size={26} />
 				</div>
 				<div className='flex flex-col items-start gap-7'>
-					<Link onClick={() => setToogle(false)} to={'/login'}>
+					<Link onClick={handleClose} to={'/login'}>
 						<LinkBtn word={'Войти'} />
 					</Link>
 
-					<Link onClick={() => setToogle(false)} to={'/register'}>
+					<Link onClick={handleClose} to={'/register'}>
 						<LinkBtn word={'Регистрация'} />
 					</Link>
 				</div>

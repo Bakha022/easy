@@ -16,7 +16,7 @@ const PromptResPage = () => {
 
 	return (
 		<div className='container'>
-			<div className='w-[1080px] mx-auto flex justify-center'>
+			<div className='lg:max-w-[1080px] mx-auto flex justify-center mt-10 md:mt-4'>
 				<PromptInput word={data.prompt} />
 			</div>
 			<Resume />

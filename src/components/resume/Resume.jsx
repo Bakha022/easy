@@ -116,7 +116,7 @@ const Resume = () => {
 			<div className='flex justify-center mb-10'>
 				<button
 					onClick={downloadPDF}
-					className='bg-[#207DFF] text-white px-[23px] py-[15px] rounded-md'
+					className='bg-[#207DFF] text-white px-[23px] py-[15px] rounded-md font-montserrat font-semibold'
 				>
 					Скачать PDF-файл
 				</button>

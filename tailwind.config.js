@@ -7,7 +7,7 @@ export default {
 				montserrat: ['Montserrat', 'sans-serif'],
 			},
 			boxShadow: {
-				custom: '0px 1px 8px 2px rgba(32, 125, 255, 0.04)', 
+				custom: '0px 0px 20px 10px rgba(32, 125, 255, 0.04)', 
 			},
 		},
 		screens: {
