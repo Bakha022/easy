@@ -13,7 +13,7 @@ const Resume = () => {
 	useEffect(() => {
 		const getData = async id => {
 			try {
-				const { data } = await request.get(`cv/cv_result/${54}/`)
+				const { data } = await request.get(`cv/cv_result/${id}/`)
 				setResume(data)
 			} catch (error) {
 				console.log(error)
@@ -103,7 +103,7 @@ const Resume = () => {
 				<section className='mb-2'>
 					<h2>Навыки</h2>
 					<section className='flex flex-col md:flex-row gap-3 items-center'>
-						<p className='mt-4'>Technologies:</p>
+						<p className='mt-4'>Технологии:</p>
 						<div className={style['skills']}>
 							{resume?.skills.map((item, key) => (
 								<div key={`${item}-${key}`}>{item}</div>

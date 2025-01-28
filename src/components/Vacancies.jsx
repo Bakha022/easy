@@ -12,7 +12,7 @@ const Vacancies = () => {
 	useEffect(() => {
 		const getData = async id => {
 			try {
-				const { data } = await request.get(`cv/vacanies/${54}/`)
+				const { data } = await request.get(`cv/vacanies/${id}/`)
 				setVacancy(data)
 			} catch (error) {
 				console.log(error)
