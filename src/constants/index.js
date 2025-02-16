@@ -61,10 +61,7 @@ export const vacancies = [
 	},
 ]
 
-
-
-
-const __END_POINT = 'http://45.92.173.137'
+const __END_POINT = 'http://api.easyresume.uz'
 
 const TOKEN = 'token'
 const REFRESH_TOKEN = 'refreshToken'
