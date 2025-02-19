@@ -102,7 +102,7 @@ const Resume = () => {
 
 				<section className='mb-2'>
 					<h2>Навыки</h2>
-					<section className='flex flex-col md:flex-row gap-3 items-center'>
+					<section className='flex flex-col md:flex-row gap-3'>
 						<p className='mt-4'>Технологии:</p>
 						<div className={style['skills']}>
 							{resume?.skills.map((item, key) => (
